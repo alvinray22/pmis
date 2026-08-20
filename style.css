@@ -1,0 +1,271 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #17202a; }
+
+/* Sticky Top Navigation Bar */
+.topbar {
+    height: 64px;
+    background: #2E8B57;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+.topbar nav { display: flex; gap: 18px; }
+.topbar a { color: #fff; text-decoration: none; font-size: 14px; }
+
+.container { max-width: 1400px; margin: 28px auto; padding: 0 22px; }
+.narrow { max-width: 900px; }
+.page-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+h1 { margin: 0 0 5px; font-size: 28px; }
+h2 { font-size: 19px; }
+.muted { color: #6b7280; margin: 0; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px #0000000d; border-left: 4px solid #8a9a93; }
+.card.total { border-left-color: #123c2f; }
+.label { font-size: 14px; color: #667085; }
+.number { font-size: 32px; font-weight: 700; margin-top: 8px; }
+
+.panel { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px #0000000d; }
+
+/* Table Container & Vertical/Horizontal Scroll */
+.table-responsive-container {
+    overflow-x: auto;
+    overflow-y: auto;      /* Enables vertical scrollbar */
+    max-height: 500px;     /* Maximum height before scrollbar appears */
+    width: 100%;
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 850px; }
+.table-nowrap { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+th, td { padding: 12px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; font-size: 13px; }
+
+/* Sticky Table Headers */
+.table-nowrap th, th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8fafc;
+    font-size: 12px;
+    color: #475467;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap !important;
+    padding: 10px 14px;
+    border: 1px solid #dee2e6;
+}
+
+.table-nowrap td { padding: 10px 14px; border: 1px solid #dee2e6; vertical-align: top; white-space: normal; }
+.table-nowrap .col-desc { min-width: 280px; max-width: 350px; word-break: break-word; }
+
+.badge { background: #edf4f1; padding: 5px 8px; border-radius: 999px; font-size: 12px; }
+.btn { display: inline-block; border: 1px solid #d0d5dd; background: #fff; color: #1f2937; padding: 10px 15px; border-radius: 7px; text-decoration: none; cursor: pointer; }
+.btn.primary { background: #123c2f; color: #fff; border-color: #123c2f; }
+.btn.full { width: 100%; margin-top: 18px; }
+
+.filters { display: flex; gap: 10px; margin-bottom: 18px; }
+.filters input { flex: 1; }
+.filters select { width: 190px; }
+input, select { width: 100%; padding: 11px; border: 1px solid #d0d5dd; border-radius: 7px; background: #fff; }
+label { font-size: 14px; font-weight: 600; display: block; }
+label input, label select { margin-top: 7px; font-weight: 400; }
+
+.grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-actions { grid-column: 1/-1; display: flex; gap: 10px; }
+.alert { padding: 12px; border-radius: 7px; margin-bottom: 15px; }
+.danger { background: #fee4e2; color: #912018; }
+.danger-text { color: #b42318; }
+.empty { text-align: center; color: #777; padding: 30px; }
+
+.login-body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #eef3f0; }
+.login-card { width: min(460px, 92vw); background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 8px 30px #00000018; }
+.login-card h1 { font-size: 24px; }
+.login-card label { margin-top: 18px; }
+.demo { margin-top: 20px; background: #f4f6f8; padding: 10px; border-radius: 6px; font-size: 13px; color: #475467; }
+
+.report-buttons { display: flex; gap: 10px; margin: 0 0 18px; }
+.report-excel { background: #eaf6ed; border-color: #9ac7a4; color: #176b2d; }
+.report-pdf { background: #fff0f0; border-color: #e2aaaa; color: #a12626; }
+
+/* Responsive Media Queries */
+@media(max-width: 800px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+    .grid-form { grid-template-columns: 1fr; }
+    .topbar { height: auto; padding: 15px; align-items: flex-start; }
+    .topbar nav { flex-wrap: wrap; }
+    .filters { flex-direction: column; }
+    .filters select { width: 100%; }
+}
+
+@media(max-width: 600px) {
+    .report-buttons { flex-direction: column; }
+}
+
+@media(max-width: 520px) {
+    .cards { grid-template-columns: 1fr; }
+    .page-head { align-items: flex-start; gap: 15px; flex-direction: column; }
+
+    /* 1. Outer Wrapper */
+.table-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    /* Explicit height limit on wrapper guarantees inner vertical scrollbar appears */
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Inner Scroll Container */
+.table-responsive-container {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    overflow-y: scroll; /* Forces vertical scrollbar track to always show */
+    width: 100%;
+    scrollbar-width: thin; /* Firefox */
+}
+
+/* Keep native top horizontal scrollbar hidden (handled by sticky bottom bar) */
+.table-responsive-container::-webkit-scrollbar:horizontal {
+    display: none;
+    height: 0;
+}
+
+/* Style vertical scrollbar for Chrome/Safari/Edge */
+.table-responsive-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-responsive-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+.table-responsive-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 1. Outer Wrapper */
+.table-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    /* Explicit height limit on wrapper guarantees inner vertical scrollbar appears */
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Inner Scroll Container */
+.table-responsive-container {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    overflow-y: scroll; /* Forces vertical scrollbar track to always show */
+    width: 100%;
+    scrollbar-width: thin; /* Firefox */
+}
+
+/* Keep native top horizontal scrollbar hidden (handled by sticky bottom bar) */
+.table-responsive-container::-webkit-scrollbar:horizontal {
+    display: none;
+    height: 0;
+}
+
+/* Style vertical scrollbar for Chrome/Safari/Edge */
+.table-responsive-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-responsive-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+.table-responsive-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Outer Container Structure */
+.table-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+    max-height: 500px; /* Limits table height for vertical scrollbar */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inner Scroll Container (Vertical + Horizontal) */
+.table-responsive-container {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: none; /* Hide top horizontal scrollbar (Firefox) */
+    -ms-overflow-style: none; /* Edge/IE */
+}
+
+/* Hide native horizontal scrollbar on top container */
+.table-responsive-container::-webkit-scrollbar:horizontal {
+    display: none;
+    height: 0;
+}
+
+/* Custom Vertical Scrollbar Styling */
+.table-responsive-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-responsive-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+/* Table Headers Sticky Lock */
+.table-nowrap th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap !important;
+    padding: 10px 14px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.table-nowrap td {
+    padding: 10px 14px;
+    border: 1px solid #dee2e6;
+    vertical-align: top;
+    white-space: normal;
+}
+
+/* Pinned Bottom Horizontal Scrollbar */
+.sticky-scroll-wrapper {
+    position: sticky;
+    bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    background: #f8f9fa;
+    z-index: 20;
+    border-top: 1px solid #dee2e6;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.sticky-scroll-content {
+    height: 1px;
+}
+
+}
